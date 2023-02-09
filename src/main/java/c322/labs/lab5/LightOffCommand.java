@@ -1,13 +1,17 @@
 package c322.labs.lab5;
 
+package c322.labs.lab5;
+
 public class LightOffCommand implements Command{
-    @Override
-    public void execute() {
+    Light light;
+    public LightOffCommand(Light light){
+        this.light=light;
+    }
+    public void execute(){
+        light.off();
 
     }
-
-    @Override
-    public void undo() {
-
+    public void undo(){
+        light.on();
     }
 }
