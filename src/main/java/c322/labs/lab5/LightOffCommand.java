@@ -1,6 +1,6 @@
 package c322.labs.lab5;
 
-package c322.labs.lab5;
+
 
 public class LightOffCommand implements Command{
     Light light;
