@@ -1,24 +1,37 @@
 package c322.labs.lab6.parta;
 
-public class GumballMachine {
+import c322.labs.lab6.partb.GumballMachineRemote;
+
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
+
+public class GumballMachine extends UnicastRemoteObject implements GumballMachineRemote {
     State soldState;
     State soldOutState;
     State noQuarterState;
     State hasQuarterState;
-    State state;
+    //State state;
     int count = 0;
+    State winnerState;
+
+    State state = soldOutState;
+
+    String location;
 
     final static int SOLD_OUT = 0;
     final static int NO_QUARTER = 1;
     final static int HAS_QUARTER = 2;
     final static int SOLD = 3;
 
-    public GumballMachine(int count) {
+    public GumballMachine(int count) throws RemoteException{
         this.count = count;
         soldState = new SoldState(this);
         soldOutState = new SoldOutState(this);
         noQuarterState = new NoQuarterState(this);
         hasQuarterState = new HasQuarterState(this);
+        winnerState = new WinnerState(this);
+        this.location = location;
+        this.count = count;
         if (count > 0) {
             state = noQuarterState;
         } else {
@@ -70,6 +83,15 @@ public class GumballMachine {
     public State getHasQuarterState() {
         return hasQuarterState;
     }
-
+    public void refill(int count) throws RemoteException {
+        this.count = count;
+        state = noQuarterState;
+    }
+    public String getLocation() {
+        return location;
+    }
+    public State getWinnerState() {
+        return winnerState;
+    }
 
 }

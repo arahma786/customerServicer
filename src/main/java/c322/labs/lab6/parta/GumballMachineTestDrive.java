@@ -1,7 +1,9 @@
 package c322.labs.lab6.parta;
 
+import java.rmi.RemoteException;
+
 public class GumballMachineTestDrive {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws RemoteException {
 
         GumballMachine gumballMachine = new GumballMachine(5);
 
