@@ -6,6 +6,7 @@ public class Profile {
 
     private String friends;
 
+
     public Profile(String id, String email) {
         this.id = id;
         this.email = email;
